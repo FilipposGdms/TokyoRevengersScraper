@@ -18,7 +18,25 @@ The application fetches chapters on demand instead of pre-scraping the entire wi
 
 ## Run locally
 
-### Python
+### Windows — one command
+
+After cloning the repository, run:
+
+```bat
+run.bat
+```
+
+The script automatically:
+
+- creates `.venv` if it does not exist
+- installs/updates the dependencies from `requirements.txt`
+- starts the FastAPI application with Uvicorn
+
+Then open <http://127.0.0.1:8000>.
+
+Press `CTRL+C` in the terminal to stop the server.
+
+### Manual Python setup
 
 ```bash
 python -m venv .venv

@@ -6,7 +6,37 @@
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; background: #f4f1ea; color: #222; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: transparent;
+    color: #222;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("/static/wallpaperflare.com_wallpaper%20(1).jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    z-index: -2;
+    pointer-events: none;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(244, 241, 234, 0.52);
+    z-index: -1;
+    pointer-events: none;
+}
+
 .reader-shell { width: min(780px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 48px; }
 .chapter-nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; font-family: system-ui, sans-serif; font-size: 0.95rem; }
 .chapter-nav > :last-child { justify-self: end; }
@@ -15,18 +45,22 @@ body { margin: 0; background: #f4f1ea; color: #222; }
 .chapter-picker { display: flex; align-items: center; gap: 8px; }
 .chapter-picker input { width: 72px; padding: 6px 8px; }
 .chapter-picker button { padding: 7px 12px; cursor: pointer; }
-.chapter-content { background: #fffdf8; border: 1px solid #ded8cd; border-radius: 8px; margin: 28px 0; padding: clamp(28px, 6vw, 64px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05); }
+.chapter-content { background: rgba(255, 253, 248, 0.94); border: 1px solid rgba(222, 216, 205, 0.9); border-radius: 8px; margin: 28px 0; padding: clamp(28px, 6vw, 64px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12); backdrop-filter: blur(3px); }
 .eyebrow { margin: 0 0 8px; font: 600 0.8rem/1 system-ui, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: #68635b; }
 h1 { margin: 0 0 36px; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; }
 .chapter-content > p:not(.eyebrow) { font-size: clamp(1.08rem, 2vw, 1.22rem); line-height: 1.85; margin: 0 0 1.35em; }
 .bottom { margin-top: 12px; }
 footer { margin-top: 32px; color: #68635b; font: 0.8rem/1.6 system-ui, sans-serif; text-align: center; }
 footer a { color: inherit; }
+
 @media (prefers-color-scheme: dark) {
-    :root, body { background: #171717; color: #e8e5df; }
-    .chapter-content { background: #1f1f1f; border-color: #343434; box-shadow: none; }
+    :root { background: #171717; color: #e8e5df; }
+    body { color: #e8e5df; }
+    body::after { background: rgba(12, 12, 14, 0.60); }
+    .chapter-content { background: rgba(31, 31, 31, 0.92); border-color: rgba(70, 70, 70, 0.82); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.32); }
     .eyebrow, footer { color: #aaa59c; }
 }
+
 @media (max-width: 620px) {
     .reader-shell { width: min(100% - 20px, 780px); padding-top: 18px; }
     .chapter-nav { grid-template-columns: 1fr 1fr; }

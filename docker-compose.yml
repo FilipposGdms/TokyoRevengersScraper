@@ -1,0 +1,7 @@
+services:
+  tokyo-revengers-reader:
+    build: .
+    container_name: tokyo-revengers-reader
+    ports:
+      - "8001:8000"
+    restart: unless-stopped
